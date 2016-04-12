@@ -213,11 +213,6 @@ public class MenuScript : MonoBehaviour {
             slot.gameObject.SetActive(false);
         }
 
-        // NOTE: Unlock/Lock aman panel depending on status recieved over network
-        // TODO: lock aman selection toggle if GameData.AllyKingID != GameData.MyPlayer.PlayerID 
-        //		 unlock aman selection toggle if GamaData.AllyKingID == -1, which indicates aman hasnt been selected or has been "deselected" 
-        //		 put aman "indicator" to the corresponding player on both teams
-
 		if (GameData.AllyKingID != GameData.MyPlayer.PlayerID)
         {
             aman_toggle.interactable = false;
@@ -268,6 +263,7 @@ public class MenuScript : MonoBehaviour {
     --                  class_type:     which class type the player is
     --                  index:          which player slot to add them to
     --                  ready_status:   whether or not the player is ready
+    --                  is_aman:        whether or not the player is aman (star beside name in slot)
     --
     -- RETURNS: void
     --
@@ -713,7 +709,7 @@ public class MenuScript : MonoBehaviour {
     -----------------------------------------------------------------------------------------------------------------*/
     public void Controls()
     {
-        // TODO: control menu?
+        
     }
 
     /*-----------------------------------------------------------------------------------------------------------------
@@ -842,7 +838,7 @@ public class MenuScript : MonoBehaviour {
 		return GameObject.Find(input).GetComponent<InputField>().text;
 	}
 
-	// testing...
+	// for testing
 	void OnGUI()
 	{
 		if (Application.platform == RuntimePlatform.LinuxPlayer)
